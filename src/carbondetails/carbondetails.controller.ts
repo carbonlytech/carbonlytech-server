@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { CarbondetailsService } from './carbondetails.service';
 import { AuthGuard } from '@nestjs/passport';
 import { CarbonDetails } from './schemas/carbondetails.schema';
@@ -15,5 +15,12 @@ export class CarbondetailsController {
         @Req() req,
     ): Promise<CarbonDetails>{
         return await this.carbondetailsService.create(carbonDetails, req.user);
+    }
+
+    @Get("getAllDetails")
+    @UseGuards(AuthGuard("jwt"))
+    async getAllCarbonDetails(@Req() req): Promise<CarbonDetails[]>{
+        const userId=req.user._id;
+        return await this.carbondetailsService.getAllByUser(userId);
     }
 }

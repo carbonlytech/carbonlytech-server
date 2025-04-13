@@ -87,4 +87,8 @@ export class CarbondetailsService {
       throw error;
     }
   }
+
+  async getAllByUser(userId: string): Promise<CarbonDetails[]>{
+    return await this.carbonDetailsModel.find({user: userId}).exec();
+  }
 }
