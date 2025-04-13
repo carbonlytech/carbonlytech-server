@@ -88,7 +88,17 @@ export class CarbondetailsService {
     }
   }
 
-  async getAllByUser(userId: string): Promise<CarbonDetails[]>{
+  async getAllCarbonDetailsByUser(userId: string): Promise<CarbonDetails[]>{
     return await this.carbonDetailsModel.find({user: userId}).exec();
+  }
+
+  async getOneCarbonDetailByUser(carbonDetailId: string,userId: string): Promise<CarbonDetails>{
+    const carbonDetail=await this.carbonDetailsModel.findOne({_id: carbonDetailId,user: userId}).exec();
+
+    if(!carbonDetail){
+      throw new Error('Kayıt bulunamadı veya yetkiniz yok');
+    }
+
+    return carbonDetail;
   }
 }
