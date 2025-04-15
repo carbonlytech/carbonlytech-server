@@ -32,6 +32,9 @@ export class CarbonDetails extends Document {
   @Prop({ type: AtikGeriDonusum })
   atikGeriDonusum: AtikGeriDonusum;
 
+  @Prop({type: Number})
+  karbonAyakIzi: number;
+
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User' })
   user: User;
 }

@@ -6,6 +6,7 @@ import {
   IsArray,
   IsDefined,
   IsEmpty,
+  IsNumber,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { User } from 'src/auth/schemas/user.schema';
@@ -109,6 +110,10 @@ export class CreateCarbonDetailsDto {
   @ValidateNested()
   @Type(() => AtikGeriDonusumDto)
   atikGeriDonusum: AtikGeriDonusumDto;
+
+  @IsOptional()
+  @IsNumber()
+  karbonAyakIzi?: number;
 
   @IsEmpty({message: "You cannot pass user id"})
   readonly user: User

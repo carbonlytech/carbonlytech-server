@@ -77,6 +77,7 @@ export class CarbondetailsService {
             createCarbonDetailsDto.atikGeriDonusum.geriDonusumOrani,
           atikTipi: createCarbonDetailsDto.atikGeriDonusum.atikTipi,
         },
+        karbonAyakIzi: createCarbonDetailsDto.karbonAyakIzi ?? null,
         user: user._id,
       });
 
