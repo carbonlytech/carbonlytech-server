@@ -81,7 +81,8 @@ export class CarbondetailsService {
         user: user._id,
       });
 
-      const createdCarbonDetails = await this.carbonDetailsModel.create(carbonDetails);
+      const createdCarbonDetails =
+        await this.carbonDetailsModel.create(carbonDetails);
       return createdCarbonDetails;
     } catch (error) {
       console.error('Error creating carbon details:', error);
@@ -89,14 +90,41 @@ export class CarbondetailsService {
     }
   }
 
-  async getAllCarbonDetailsByUser(userId: string): Promise<CarbonDetails[]>{
-    return await this.carbonDetailsModel.find({user: userId}).exec();
+  async update(
+    id: string,
+    dto: CreateCarbonDetailsDto,
+    userId: string,
+  ): Promise<CarbonDetails> {
+    const existing = await this.carbonDetailsModel.findOne({
+      _id: id,
+      user: userId,
+    });
+
+    if (!existing) {
+      throw new Error(
+        'Güncelleme başarısız: Kayıt bulunamadı veya yetkiniz yok.',
+      );
+    }
+
+    // DTO'ya uygun alanları güncelle
+    Object.assign(existing, dto);
+
+    return await existing.save();
   }
 
-  async getOneCarbonDetailByUser(carbonDetailId: string,userId: string): Promise<CarbonDetails>{
-    const carbonDetail=await this.carbonDetailsModel.findOne({_id: carbonDetailId,user: userId}).exec();
+  async getAllCarbonDetailsByUser(userId: string): Promise<CarbonDetails[]> {
+    return await this.carbonDetailsModel.find({ user: userId }).exec();
+  }
 
-    if(!carbonDetail){
+  async getOneCarbonDetailByUser(
+    carbonDetailId: string,
+    userId: string,
+  ): Promise<CarbonDetails> {
+    const carbonDetail = await this.carbonDetailsModel
+      .findOne({ _id: carbonDetailId, user: userId })
+      .exec();
+
+    if (!carbonDetail) {
       throw new Error('Kayıt bulunamadı veya yetkiniz yok');
     }
 
