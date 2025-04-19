@@ -45,19 +45,19 @@ class EnerjiDto {
 
 // Yakit DTO
 class YakitDto {
-  @IsString() tip: string;
-  @IsString() miktar: string;
-  @IsString() birim: string;
-  @IsString() donem: string;
+  @IsOptional() @IsString() tip: string;
+  @IsOptional() @IsString() miktar: string;
+  @IsOptional() @IsString() birim: string;
+  @IsOptional() @IsString() donem: string;
 }
 
 // Hammadde DTO
 class HammaddeDto {
-  @IsString() ad: string;
-  @IsString() miktar: string;
-  @IsString() birim: string;
+  @IsOptional() @IsString() ad: string;
+  @IsOptional() @IsString() miktar: string;
+  @IsOptional() @IsString() birim: string;
   @IsOptional() @IsString() donem?: string;
-  @IsString() tedarik: string;
+  @IsOptional() @IsString() tedarik: string;
 }
 
 // Nested Yakit + Hammadde DTO
@@ -76,17 +76,17 @@ class YakitHammaddeDto {
 // Emisyon DTO
 class EmisyonDto {
   @IsString() surecTipi: string;
-  @IsString() emisyonFaktoru: string;
-  @IsString() co2: string;
-  @IsString() ch4: string;
-  @IsString() n2o: string;
+  @IsOptional() @IsString() emisyonFaktoru: string;
+  @IsOptional() @IsString() co2: string;
+  @IsOptional() @IsString() ch4: string;
+  @IsOptional() @IsString() n2o: string;
 }
 
 // Atık & Geri Dönüşüm DTO
 class AtikGeriDonusumDto {
-  @IsString() atikMiktari: string;
-  @IsString() geriDonusumOrani: string;
-  @IsString() atikTipi: string;
+  @IsOptional() @IsString() atikMiktari: string;
+  @IsOptional() @IsString() geriDonusumOrani: string;
+  @IsOptional() @IsString() atikTipi: string;
 }
 
 // Ana DTO
