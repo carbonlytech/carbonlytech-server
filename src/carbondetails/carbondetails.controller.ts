@@ -1,7 +1,10 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
+  HttpException,
+  HttpStatus,
   Param,
   Patch,
   Post,
@@ -39,6 +42,23 @@ export class CarbondetailsController {
       updateCarbonDetailsDto,
       userId,
     );
+  }
+
+  @Delete('delete-details/:id')
+  @UseGuards(AuthGuard('jwt'))
+  async deleteCarbonDetails(
+    @Param('id') id: string,
+    @Req() req,
+  ): Promise<{ message: string }> {
+    const userId = req.user._id;
+    const result = await this.carbondetailsService.delete(id, userId);
+    if (!result) {
+      throw new HttpException(
+        'Kayıt bulunamadı veya yetkiniz yok.',
+        HttpStatus.NOT_FOUND,
+      );
+    }
+    return { message: 'Kayıt başarıyla silindi.' };
   }
 
   @Get('getAllDetails')
