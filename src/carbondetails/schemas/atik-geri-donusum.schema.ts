@@ -8,5 +8,6 @@ export class AtikGeriDonusum {
   @Prop() atikTipi: string;
 }
 
-export const AtikGeriDonusumSchema = SchemaFactory.createForClass(AtikGeriDonusum);
+export const AtikGeriDonusumSchema =
+  SchemaFactory.createForClass(AtikGeriDonusum);
 export type AtikGeriDonusumDocument = AtikGeriDonusum & Document;

@@ -8,7 +8,7 @@ import { CarbonDetailsModule } from './carbondetails/carbondetails.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ".env", // veya varsayılan zaten .env
+      envFilePath: '.env', // veya varsayılan zaten .env
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.DB_URI!),
@@ -18,5 +18,4 @@ import { CarbonDetailsModule } from './carbondetails/carbondetails.module';
   controllers: [AppController],
   providers: [AppService],
 })
-
 export class AppModule {}

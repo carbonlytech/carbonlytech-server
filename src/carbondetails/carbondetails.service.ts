@@ -113,12 +113,15 @@ export class CarbondetailsService {
   }
 
   async delete(id: string, userId: string): Promise<boolean> {
-    const result = await this.carbonDetailsModel.deleteOne({ _id: id, user: userId });
-  
+    const result = await this.carbonDetailsModel.deleteOne({
+      _id: id,
+      user: userId,
+    });
+
     if (result.deletedCount === 0) {
       return false;
     }
-  
+
     return true;
   }
 

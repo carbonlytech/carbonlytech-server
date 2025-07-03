@@ -24,7 +24,6 @@ export class CarbonDetails extends Document {
     },
   })
   yakitHammadde: { yakitlar: Yakit[]; hammaddeler: Hammadde[] };
-  
 
   @Prop({ type: Emisyon })
   emisyon: Emisyon;
@@ -32,7 +31,7 @@ export class CarbonDetails extends Document {
   @Prop({ type: AtikGeriDonusum })
   atikGeriDonusum: AtikGeriDonusum;
 
-  @Prop({type: Number})
+  @Prop({ type: Number })
   karbonAyakIzi: number;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User' })

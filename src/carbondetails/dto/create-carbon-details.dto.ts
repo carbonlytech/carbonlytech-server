@@ -115,6 +115,6 @@ export class CreateCarbonDetailsDto {
   @IsNumber()
   karbonAyakIzi?: number;
 
-  @IsEmpty({message: "You cannot pass user id"})
-  readonly user: User
+  @IsEmpty({ message: 'You cannot pass user id' })
+  readonly user: User;
 }

@@ -2,13 +2,19 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CarbondetailsService } from './carbondetails.service';
 import { CarbondetailsController } from './carbondetails.controller';
-import { CarbonDetails, CarbonDetailsSchema } from './schemas/carbondetails.schema';
+import {
+  CarbonDetails,
+  CarbonDetailsSchema,
+} from './schemas/carbondetails.schema';
 import { Firma, FirmaSchema } from './schemas/firma.schema';
 import { Enerji, EnerjiSchema } from './schemas/enerji.schema';
 import { Yakit, YakitSchema } from './schemas/yakit.schema';
 import { Hammadde, HammaddeSchema } from './schemas/hammadde.schema';
 import { Emisyon, EmisyonSchema } from './schemas/emisyon.schema';
-import { AtikGeriDonusum, AtikGeriDonusumSchema } from './schemas/atik-geri-donusum.schema';
+import {
+  AtikGeriDonusum,
+  AtikGeriDonusumSchema,
+} from './schemas/atik-geri-donusum.schema';
 import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
